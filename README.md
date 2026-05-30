@@ -35,3 +35,5 @@ A cute witchy Pomodoro study companion with cozy Halloween vibes, pixel-art char
 ## Run
 
 Open `index.html` in your browser. No setup required.
+
+https://github.com/user-attachments/assets/c7f9791b-c11c-4e16-a231-c114baa3207c
