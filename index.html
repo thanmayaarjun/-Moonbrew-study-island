@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moonbrew Study Island</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Decorative sky layers are intentionally separate from the app UI. -->
+    <div class="sky-effects" aria-hidden="true">
+      <span class="fog fog-1"></span>
+      <span class="fog fog-2"></span>
+      <span class="cloud cloud-1"></span>
+      <span class="cloud cloud-2"></span>
+      <span class="cloud cloud-3"></span>
+      <span class="shooting-star shooting-star-1"></span>
+      <span class="shooting-star shooting-star-2"></span>
+      <span class="sparkle sparkle-1"></span>
+      <span class="sparkle sparkle-2"></span>
+      <span class="sparkle sparkle-3"></span>
+      <span class="sparkle sparkle-4"></span>
+      <span class="sparkle sparkle-5"></span>
+      <span class="sparkle sparkle-6"></span>
+      <span class="firefly firefly-1"></span>
+      <span class="firefly firefly-2"></span>
+      <span class="firefly firefly-3"></span>
+      <span class="firefly firefly-4"></span>
+    </div>
+
+    <div class="celebration-layer" id="celebrationLayer" aria-hidden="true"></div>
+
+    <div class="app-shell">
+      <header class="hero" id="top">
+        <nav class="topbar" aria-label="Site">
+          <a class="brand-mark" href="#top" aria-label="Moonbrew Study Island home">
+            <span class="brand-icon" aria-hidden="true">☾</span>
+            <span>Moonbrew Study Island</span>
+          </a>
+          <span class="save-chip" id="saveChip">Save spell ready</span>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Cozy witchcore pomodoro</p>
+            <h1>Study with a tiny sky friend.</h1>
+            <p class="hero-text">
+              Drift from island to island, collect focus sessions, and let a
+              sweet companion keep watch over your work.
+            </p>
+            <div class="hero-actions">
+              <a class="glow-button" href="#timerSection">Start Focus</a>
+              <a class="ghost-button" href="#characterSection">Pick Companion</a>
+            </div>
+          </div>
+
+          <div class="hero-stage" aria-label="Flying island preview">
+            <div class="moon" aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="lantern lantern-1" aria-hidden="true"></div>
+            <div class="lantern lantern-2" aria-hidden="true"></div>
+            <div class="tiny-ghost hero-ghost" aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="hero-flight-path" aria-hidden="true">
+              <div class="broom-flight hero-broom" id="heroBroom">
+                <div class="broom-stick"></div>
+                <div class="broom-bristles"></div>
+                <div class="broom-character" data-character-render></div>
+              </div>
+            </div>
+            <div class="floating-island hero-island" aria-hidden="true">
+              <div class="island-grass"></div>
+              <div class="island-soil"></div>
+              <div class="pixel-house">
+                <span class="house-roof"></span>
+                <span class="house-body"></span>
+                <span class="house-window"></span>
+              </div>
+              <div class="pumpkin pumpkin-one"></div>
+              <div class="pumpkin pumpkin-two"></div>
+              <div class="mushroom mushroom-one"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section character-section" id="characterSection">
+          <div class="section-heading">
+            <p class="eyebrow">Companion circle</p>
+            <h2>Choose your study buddy</h2>
+          </div>
+          <div class="character-layout">
+            <div class="character-preview">
+              <div class="preview-orbit" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="preview-character" data-character-render></div>
+              <div>
+                <p class="preview-label" id="selectedType">Cat familiar</p>
+                <h3 id="selectedName">Black Witch Cat</h3>
+                <p id="selectedCharm">Keeps your notes under moonlit protection.</p>
+              </div>
+            </div>
+            <div class="character-grid" id="characterGrid" aria-label="Character choices"></div>
+          </div>
+        </section>
+
+        <section class="section journey-section" id="journeySection">
+          <div class="section-heading">
+            <p class="eyebrow">Flying island map</p>
+            <h2>Tonight's route</h2>
+          </div>
+
+          <div class="journey-board" id="journeyBoard">
+            <div class="journey-sky" aria-hidden="true">
+              <span class="map-cloud map-cloud-1"></span>
+              <span class="map-cloud map-cloud-2"></span>
+              <span class="map-moon"></span>
+              <div class="map-track">
+                <div class="track-fill" id="trackFill"></div>
+                <div class="broom-flight map-broom" id="mapBroom">
+                  <div class="broom-stick"></div>
+                  <div class="broom-bristles"></div>
+                  <div class="broom-character" data-character-render></div>
+                </div>
+              </div>
+            </div>
+            <div class="destination-strip" id="destinationStrip"></div>
+          </div>
+        </section>
+
+        <section class="section timer-section" id="timerSection">
+          <div class="section-heading">
+            <p class="eyebrow">Pomodoro cauldron</p>
+            <h2 id="timerHeading">Focus spell</h2>
+          </div>
+
+          <div class="timer-layout">
+            <div class="timer-tool">
+              <div class="mode-tabs" role="tablist" aria-label="Timer mode">
+                <button class="mode-tab active" id="focusMode" type="button">Focus</button>
+                <button class="mode-tab" id="breakMode" type="button">Break</button>
+              </div>
+
+              <div class="timer-face" aria-live="polite">
+                <span class="timer-glow" aria-hidden="true"></span>
+                <span id="timeDisplay">25:00</span>
+              </div>
+
+              <div class="timer-controls">
+                <button class="glow-button" id="startButton" type="button">▶ Start</button>
+                <button class="ghost-button" id="pauseButton" type="button">⏸ Pause</button>
+                <button class="ghost-button" id="resetButton" type="button">↺ Reset</button>
+              </div>
+
+              <div class="timer-fields">
+                <label>
+                  Study
+                  <input id="studyInput" type="number" min="1" max="180" value="25" />
+                  <span>min</span>
+                </label>
+                <label>
+                  Break
+                  <input id="breakInput" type="number" min="1" max="60" value="5" />
+                  <span>min</span>
+                </label>
+              </div>
+            </div>
+
+            <aside class="session-card" aria-label="Current route">
+              <div class="mini-scene">
+                <div class="tiny-ghost card-ghost" aria-hidden="true"><span></span></div>
+                <div class="pumpkin card-pumpkin" aria-hidden="true"></div>
+                <div class="potion-bottle" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+                <div class="preview-character mini-character" data-character-render></div>
+              </div>
+              <p class="preview-label">Next landing</p>
+              <h3 id="destinationName">Moonbrew Hollow</h3>
+              <p id="destinationNote">A soft little hollow for warm notes and colder moonlight.</p>
+              <div class="route-meter" aria-label="Study route progress">
+                <span id="routeMeterFill"></span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section stats-section" id="statsSection">
+          <div class="section-heading">
+            <p class="eyebrow">Pocket spellbook</p>
+            <h2>Study stats</h2>
+          </div>
+
+          <div class="stats-grid" id="statsGrid">
+            <article class="stat-card">
+              <span class="stat-icon" aria-hidden="true">✦</span>
+              <p>Total sessions</p>
+              <strong id="totalSessions">0</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon" aria-hidden="true">☕</span>
+              <p>Focus time</p>
+              <strong id="totalFocus">0m</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon" aria-hidden="true">☾</span>
+              <p>Islands visited</p>
+              <strong id="islandsVisited">1</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon" aria-hidden="true">⌂</span>
+              <p>Current stop</p>
+              <strong id="currentStop">Moonbrew Hollow</strong>
+            </article>
+          </div>
+
+          <div class="footer-actions">
+            <button class="ghost-button compact" id="clearStatsButton" type="button">Clear Save</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="cute-footer">
+        <span>Made for moonlit focus, warm mugs, and tiny victories.</span>
+        <a href="#top">Back to sky</a>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
